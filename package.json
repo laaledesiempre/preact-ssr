@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "nodemon --watch build build/server/index.js",
     "swc": "swc ./src -d build -w",
-    "browserify": "browserify ./build/server/client.entry.js -p esmify > ./build/server/bundle.js",
-    "test":"dev && echo hello",
+    "browserify": "watchify ./build/server/client.entry.js -p esmify -o ./build/server/bundle.js",
     "start": "npm-run-all --parallel dev browserify swc"
   },
   "author": "",
