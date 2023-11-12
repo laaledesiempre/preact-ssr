@@ -1,7 +1,7 @@
 import { hydrate } from 'preact'
 import {h} from 'preact'
-import {Main} from '../pages/Main'
+import {MainHydrate} from '../Main'
 hydrate(
-  h(Main),
+  h(MainHydrate),
   document.body
 )
