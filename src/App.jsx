@@ -2,15 +2,20 @@ import {h, Fragment} from 'preact'
 
 import { Routes, Route } from 'react-router-dom'
 import { Nav } from './components/Nav'
+import { Home, Register, Login } from './pages/index.js'
 
 export const App = () => {
   return (
  <> 
     <Nav />
+    <main>  
     <Routes>
-      <Route path="/a" element={<div>a</div>} />
-      <Route path="/b" element={<div>b</div>} />
+
+      <Route path="/" element={<Home />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register/>} />
     </Routes>
+    </main>
     </>
   )
 }

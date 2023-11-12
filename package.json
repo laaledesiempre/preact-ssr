@@ -7,7 +7,8 @@
     "dev": "nodemon --watch build build/server/index.js",
     "swc": "swc ./src -d build -w",
     "browserify": "watchify ./build/server/client.entry.js -p esmify -o ./build/server/bundle.js",
-    "start": "npm-run-all --parallel dev browserify swc"
+    "buildcss": "nodemon --watch ./src/**.css --exec 'lightningcss --minify --bundle ./src/**.css --output-dir ./build/css'",
+    "start": "npm-run-all --parallel dev browserify swc buildcss"
   },
   "author": "",
   "license": "ISC",
@@ -27,7 +28,10 @@
     "browserify": "^17.0.0",
     "chokidar": "^3.5.3",
     "esmify": "^2.1.1",
+    "lightningcss-cli": "^1.22.1",
     "nodemon": "^3.0.1",
-    "npm-run-all": "^4.1.5"
+    "npm-run-all": "^4.1.5",
+    "watch-run": "^1.2.5",
+    "watchify": "^4.0.0"
   }
 }

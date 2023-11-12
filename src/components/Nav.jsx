@@ -5,8 +5,9 @@ export const Nav = () => {
   return (
     <header>
       <nav>
-        <NavLink to="b">To B</NavLink>
-        <NavLink to="a">To A</NavLink>
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/login">Login</NavLink>
+        <NavLink to="/register">Register</NavLink>
       </nav>
     </header>
   )

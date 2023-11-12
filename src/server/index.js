@@ -10,6 +10,7 @@ const PORT=3000
 
 const app = express()
 app.use(compression())
+app.use(express.static(`${__dirname}/../css`))
 
 app.get(
   "/client.js",
@@ -27,6 +28,8 @@ app.get(
       </Layout>)
     ))}
 )
+
+
 
 app.listen(
   PORT,
