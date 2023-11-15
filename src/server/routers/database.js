@@ -6,14 +6,14 @@ const dbRouter= Router()
 
 dbRouter.post("/crate/post",(req,res)=>{
     const {content} = req.body
-    const note = createPost(req.username, content) //TODO
+    const note = createNote(req.username, content) //TODO
     addNote(note) //TODO
     res.send("Data sent")
 })
 
 dbRouter.delete("/delete/post/:id",(req,res)=>{
     const post = getPostById(id)
-    post.username === req.username && deletePost(id) //TODO
+    post.username === req.username && deleteNote(id) //TODO
     res.send("Data sent")
 })
 

@@ -1,7 +1,6 @@
 import {h, Fragment} from 'preact'
-
 import { Routes, Route } from 'react-router-dom'
-import { Nav } from './components/Nav'
+import { Nav } from './components/index.js'
 import { Home, Register, Login } from './pages/index.js'
 
 export const App = () => {
@@ -10,7 +9,6 @@ export const App = () => {
     <Nav />
     <main>  
     <Routes>
-
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register/>} />
