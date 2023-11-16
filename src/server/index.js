@@ -3,6 +3,7 @@ import express from 'express'
 import compression from 'compression'
 import render from 'preact-render-to-string'
 import {h} from 'preact'
+import { db } from './db/index.js'
 
 // Configs:
 import {APP_PORT} from '../configs/server.js'
