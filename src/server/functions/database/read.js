@@ -11,8 +11,16 @@ export const getAllPosts= () =>{
 
 export const getUserData=(username)=>{
   let user
-  db.get(GET_USER_DATA_QUERY,[username],(_e,rows)=>{
-    user=rows
+  db.get(GET_USER_DATA_QUERY,[username],(_e,row)=>{
+    user=row
   })
   return user
+}
+
+export const getPostById=(id)=>{
+  let post
+  de.get(GET_POST_BY_ID_QUERY,[id],(_e,row)=>{
+    post = row
+  })
+  return post
 }

@@ -2,15 +2,16 @@
 import express from 'express'
 import compression from 'compression'
 import render from 'preact-render-to-string'
-import {h} from 'preact'
+import { h } from 'preact'
 import { db } from './db/index.js'
-
+import { authMiddleware } from './middlewares/auth'
+import { dbRouter } from './routers/database'
 // Configs:
-import {APP_PORT} from '../configs/server.js'
+import { APP_PORT } from '../configs/server.js'
 
 // Components:
-import {Main} from '../Main'
-import {Layout} from './Layout'
+import { Main } from '../Main'
+import { Layout } from './Layout'
 
 // App
 const app = express()
@@ -18,9 +19,10 @@ const app = express()
 //Middlewares
 app.use(compression())
 app.use(express.static(`${__dirname}/../css`)) //This one serves css
+app.use(authMiddleware())
 
 //Routers
-// TODO
+app.use('/db',dbRouter)
 
 //Endpoints:
 
