@@ -1,3 +1,17 @@
 import {createUser, createPost, createAuthEntry} from './create'
 import {getAllPosts, getUserData, getPostById} from './read'
-export {createUser, createPost, createAuthEntry, getAllPosts, getUserData, getPostById}
+import {deleteUser, deletePost} from './delete'
+import {updatePassword, updatePost} from './update'
+
+export {
+    createUser,
+    createPost,
+    createAuthEntry,
+    getAllPosts,
+    getUserData,
+    getPostById,
+    updatePassword,
+    updatePost,
+    deleteUser,
+    deletePost
+}

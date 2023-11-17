@@ -17,11 +17,15 @@ dbRouter.post("/create/user",(req,res)=>{
     const {username, password} = req.body
     // need to add hashing and stuff TODO
     createUser(username,password,ROLES.USER)
-    res.send("Data sent")
+    //DEBUG DELETE
+    console.log(username,password)
+    res.send("Data sent to create user")
 })
 
 dbRouter.post("/login",(req,res)=>{
     const {username, password} = req.body
+    //DEBUG DELETE
+    console.log(username,password)
     const user = getUserData(username)
     if (user.password == password) { //need to add hashing and stuff TODO
         const token = jsonwebtoken.sign(username, SECRET)

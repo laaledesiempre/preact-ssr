@@ -5,6 +5,7 @@ import render from 'preact-render-to-string'
 import { h } from 'preact'
 import { authMiddleware } from './middlewares/auth'
 import { dbRouter } from './routers/database'
+
 // Configs:
 import { APP_PORT } from './configs/server.js'
 
@@ -23,8 +24,6 @@ app.use(authMiddleware)
 //Routers
 app.use('/db',dbRouter)
 
-//Endpoints:
-//
 //Hydration Endpoint
 app.get(
   "/client.js",
