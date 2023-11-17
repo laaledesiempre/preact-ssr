@@ -3,7 +3,6 @@ import { USER_TABLE_CREATION_QUERY, POSTS_TABLE_CREATION_QUERY, AUTH_TABLE_CREAT
 
 export const startDatabase = () => {
   const db = new sqlite3.Database('./data.db')
-  //const db = new sqlite3.Database(":memory:")
   db.run(USER_TABLE_CREATION_QUERY)
   db.run(POSTS_TABLE_CREATION_QUERY)
   db.run(AUTH_TABLE_CREATION_QUERY)
