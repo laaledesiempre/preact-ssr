@@ -1,6 +1,6 @@
 import {h, Fragment} from 'preact'
 import { useState } from 'react'
-import { Style } from '../components/index.js'
+import { Style } from '../../components/index.js'
 
 export const Home = () => {
   const [notes, setNotes] = useState([])

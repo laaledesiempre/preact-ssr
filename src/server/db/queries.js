@@ -3,7 +3,7 @@ export const USER_TABLE_CREATION_QUERY =`
     users(
       id INTEGER PRIMARY KEY,
       username TEXT NOT NULL UNIQUE,
-      password TEXT NOT NULL
+      password TEXT NOT NULL,
       role TEXT NOT NULL);`
 
 export const POSTS_TABLE_CREATION_QUERY =`

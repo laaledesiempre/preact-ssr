@@ -1,4 +1,4 @@
-
+import { db } from "../../db"
 import { GET_ALL_POSTS_QUERY, GET_USER_DATA_QUERY } from "../../db/queries"
 
 export const getAllPosts= () =>{

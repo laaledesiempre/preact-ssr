@@ -3,11 +3,10 @@ import express from 'express'
 import compression from 'compression'
 import render from 'preact-render-to-string'
 import { h } from 'preact'
-import { db } from './db/index.js'
 import { authMiddleware } from './middlewares/auth'
 import { dbRouter } from './routers/database'
 // Configs:
-import { APP_PORT } from '../configs/server.js'
+import { APP_PORT } from './configs/server.js'
 
 // Components:
 import { Main } from '../Main'
@@ -19,13 +18,13 @@ const app = express()
 //Middlewares
 app.use(compression())
 app.use(express.static(`${__dirname}/../css`)) //This one serves css
-app.use(authMiddleware())
+app.use(authMiddleware)
 
 //Routers
 app.use('/db',dbRouter)
 
 //Endpoints:
-
+//
 //Hydration Endpoint
 app.get(
   "/client.js",
@@ -49,5 +48,5 @@ app.get(
 //App Start
 app.listen(
   APP_PORT,
-  console.log(`server on port ${PORT}`
+  console.log(`server on port ${APP_PORT}`
   ))

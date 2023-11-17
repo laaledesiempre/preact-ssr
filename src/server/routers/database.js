@@ -1,4 +1,4 @@
-// Todo
+
 import {createUser, createPost, getPostById, getUserData} from '../functions/database/index.js'
 import {ROLES} from '../configs/constants'
 import {Router} from 'express'
@@ -25,7 +25,7 @@ dbRouter.post("/login",(req,res)=>{
     const user = getUserData(username)
     if (user.password == password) { //need to add hashing and stuff TODO
         const token = jsonwebtoken.sign(username, SECRET)
-        req.json({token})
+        res.json({token})
     } 
 })
 
@@ -48,3 +48,4 @@ dbRouter.get("/api/",(req,res)=>{
 })
 
 export {dbRouter}
+
