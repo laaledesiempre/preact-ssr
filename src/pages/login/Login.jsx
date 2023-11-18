@@ -5,16 +5,17 @@ export const Login = () => {
   const handleSubmit=(e)=>{
     e.preventDefault()
     const {username, password} =e.target
+    
     axios.post(
-      "./db/create/user",
+      "./db/login",
       {
         username: username.value,
         password: password.value
       }
     ).then((response)=>{
-      console.log(response)
-    }).catch((e)=>{
-      alert(e)
+      window.sessionStorage.setItem("token",response.data.token)
+    }).catch((err)=>{
+      alert(err)
     })
   }
   return (

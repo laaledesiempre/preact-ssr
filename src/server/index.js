@@ -5,6 +5,7 @@ import render from 'preact-render-to-string'
 import { h } from 'preact'
 import { authMiddleware } from './middlewares/auth'
 import { dbRouter } from './routers/database'
+import cookieParser from 'cookie-parser'
 
 // Configs:
 import { APP_PORT } from './configs/server.js'
@@ -20,6 +21,8 @@ const app = express()
 app.use(compression())
 app.use(express.static(`${__dirname}/../css`)) //This one serves css
 app.use(authMiddleware)
+app.use(express.json())
+app.use(cookieParser())
 
 //Routers
 app.use('/db',dbRouter)

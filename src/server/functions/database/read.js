@@ -2,25 +2,25 @@ import { db } from "../../db"
 import { GET_ALL_POSTS_QUERY, GET_USER_DATA_QUERY } from "../../db/queries"
 
 export const getAllPosts= () =>{
-  let data
-  db.all(GET_ALL_POSTS_QUERY,[],(_e,rows)=>{
-    data = rows
+  return new Promise((resolve,_reject)=>{
+    db.all(GET_ALL_POSTS_QUERY,[],(_e,rows)=>{
+    resolve(rows)
   })
-  return data
+  })
 }
 
 export const getUserData=(username)=>{
-  let user
-  db.get(GET_USER_DATA_QUERY,[username],(_e,row)=>{
-    user=row
+  return new Promise((resolve,_reject)=>{
+    db.get(GET_USER_DATA_QUERY,[username],(_e,row)=>{
+      resolve(row)
+    })
   })
-  return user
 }
 
 export const getPostById=(id)=>{
-  let post
+  return new Promise((resolve,_reject)=>{
   de.get(GET_POST_BY_ID_QUERY,[id],(_e,row)=>{
-    post = row
+    resolve(row)
   })
-  return post
+  })
 }

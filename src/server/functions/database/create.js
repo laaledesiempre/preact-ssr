@@ -3,13 +3,13 @@ import { CREATE_AUTH_ENTRY_QUERY, CREATE_POST_QUERY, CREATE_USER_QUERY } from ".
 import { handleError } from "../utils"
 
 export const createUser= (username,password,role)=>{
-  db.run(CREATE_USER_QUERY, [username, password ,role],handleError(e))
+  db.run(CREATE_USER_QUERY, [username, password ,role],(e)=>handleError(e))
 }
 
 export const createPost= (username, content)=>{
-  db.run(CREATE_POST_QUERY, [username, content], handleError(e))
+  db.run(CREATE_POST_QUERY, [username, content], (e)=>handleError(e))
 }
 
 export const createAuthEntry= (refreshKey,jwt)=>{
-  db.run(CREATE_AUTH_ENTRY_QUERY,[refreshKey,jwt],handleError(e))
+  db.run(CREATE_AUTH_ENTRY_QUERY,[refreshKey,jwt],(e)=>handleError(e))
 }

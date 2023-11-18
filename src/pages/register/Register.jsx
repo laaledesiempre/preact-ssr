@@ -1,19 +1,20 @@
 import {h, Fragment} from 'preact'
+import axios from 'axios'
 
 export const Register= () => {
   const handleSubmit=(e)=>{
     e.preventDefault()
     const {username, password} =e.target
     axios.post(
-      "./db/login",
+      "./db/create/user",
       {
         username: username.value,
         password: password.value
       }
     ).then((response)=>{
       console.log(response)
-    }).catch((e)=>{
-      alert(e)
+    }).catch((err)=>{
+      alert(err)
     })
   }
   return (
