@@ -19,8 +19,16 @@ export const getUserData=(username)=>{
 
 export const getPostById=(id)=>{
   return new Promise((resolve,_reject)=>{
-  de.get(GET_POST_BY_ID_QUERY,[id],(_e,row)=>{
+  db.get(GET_POST_BY_ID_QUERY,[id],(_e,row)=>{
     resolve(row)
+  })
+  })
+}
+
+export const getPostsByUsername=(username)=>{
+  return new Promise((resolve,_reject)=>{
+  db.get(GET_POST_BY_USERNAME_QUERY,[username],(_e,rows)=>{
+    resolve(rows)
   })
   })
 }

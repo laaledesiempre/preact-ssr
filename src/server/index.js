@@ -5,6 +5,7 @@ import render from 'preact-render-to-string'
 import { h } from 'preact'
 import { authMiddleware } from './middlewares/auth'
 import { dbRouter } from './routers/database'
+import { apiRouter } from './routers/api'
 import cookieParser from 'cookie-parser'
 
 // Configs:
@@ -26,6 +27,7 @@ app.use(cookieParser())
 
 //Routers
 app.use('/db',dbRouter)
+app.use('/api',apiRouter)
 
 //Hydration Endpoint
 app.get(

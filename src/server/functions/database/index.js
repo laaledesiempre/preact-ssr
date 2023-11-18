@@ -1,5 +1,5 @@
 import {createUser, createPost, createAuthEntry} from './create'
-import {getAllPosts, getUserData, getPostById} from './read'
+import {getAllPosts, getUserData, getPostById, getPostsByUsername} from './read'
 import {deleteUser, deletePost} from './delete'
 import {updatePassword, updatePost} from './update'
 
@@ -13,5 +13,6 @@ export {
     updatePassword,
     updatePost,
     deleteUser,
-    deletePost
+    deletePost,
+    getPostsByUsername
 }

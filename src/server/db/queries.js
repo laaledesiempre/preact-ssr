@@ -50,10 +50,18 @@ export const UPDATE_PASSWORD_QUERY =`
     SET content=?
     WHERE id=?;`
 
+
+// Read    
+
 export const GET_ALL_POSTS_QUERY=`
   SELECT * FROM posts;
 `
-
 export const GET_USER_DATA_QUERY=`
   SELECT * FROM users WHERE username=?
+`
+export const GET_POST_BY_USERNAME_QUERY=`
+  SELECT * FROM posts WHERE username=?
+`
+export const GET_POST_BY_ID_QUERY=`
+  SELECT * FROM posts WHERE id=?
 `

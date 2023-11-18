@@ -1,9 +1,21 @@
-import {h, Fragment} from 'preact'
-import { useState } from 'react'
+import { h, Fragment } from 'preact'
+import { useState, useEffect } from 'preact/hooks'
 import { Style } from '../../components/index.js'
+import axios from 'axios'
 
 export const Home = () => {
   const [notes, setNotes] = useState([])
+
+  useEffect(()=>{
+    axios.get("./api/posts")
+    .then(
+      (response)=>{
+      setNotes(response)
+    })
+    .catch(err=>alert(err))
+  }
+  ,[])
+
   return (
     <>
       <h1>Welcome to laaledesiempre's guest book!</h1>
