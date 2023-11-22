@@ -1,4 +1,4 @@
 import { handleError } from "./handleError";
 import { hashPassword } from "./hashPassword";
-
-export {handleError, hashPassword }
+import { comparePassword } from "./comparePassword";
+export {handleError, hashPassword, comparePassword }

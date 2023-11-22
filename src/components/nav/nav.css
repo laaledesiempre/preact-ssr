@@ -1,0 +1,32 @@
+header {
+  background-color: grey;
+  display: flex;
+  padding: 0 0.7rem;
+  justify-content: space-between;
+  height:4rem;
+}
+nav{
+  display: flex;
+  margin-block-start:0.5rem;
+  gap: 1rem;
+}
+nav a {
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: black;
+  background-color: lightgrey;
+  border-radius: 0.5rem;
+  height:3rem;
+  transition:300ms linear height;
+}
+
+header .username{
+    font-size:2rem;
+    font-weight: 500;
+    margin-inline-end:1rem;
+  }
+
+.active{
+  border-radius: 0.5rem 0.5rem 0 0;
+  height: 3.8rem;
+  }

@@ -4,28 +4,29 @@ import {Router} from 'express'
 import jsonwebtoken from 'jsonwebtoken'
 import { SECRET } from '../configs/server.js'
 import { hashPassword } from '../functions/utils/hashPassword.js'
+import { comparePassword } from '../functions/utils/comparePassword.js'
 
 const dbRouter= Router()
 
-dbRouter.post("/crate/post",(req,res)=>{
+dbRouter.post("/create/post",(req,res)=>{
     const {content} = req.body
     const username = req.username
     username && createPost(username, content)
     res.send("Data sent")
 })
 
-dbRouter.post("/create/user",(req,res)=>{
+dbRouter.post("/create/user",async (req,res)=>{
     const {username, password} = req.body
-    let hashedPassword = hashPassword(password)
+    let hashedPassword = await hashPassword(password)
     createUser(username,hashedPassword,ROLES.USER)
     res.send("Data sent to create user")
 })
 
 dbRouter.post("/login",async(req,res)=>{
     const {username, password} = req.body
-    let hashedPassword = hashPassword(password)
     const user = await getUserData(username)
-    if (user && user.password == hashedPassword) { 
+    let passwordCompar= await comparePassword(password, user.password)
+    if (user && passwordCompar) { 
     const token = jsonwebtoken.sign(username, SECRET)
         res.json({token})
     } else {
@@ -47,8 +48,9 @@ dbRouter.put("/change/post/:id",async(req,res)=>{
     res.send("Data sent")
 })
 
-dbRouter.get("/api/",(req,res)=>{
-  res.send()  
+dbRouter.get("/info",(req,res)=>{
+  req.username && console.log(req.username) 
+  res.json({username: req.username})  
 })
 
 export {dbRouter}

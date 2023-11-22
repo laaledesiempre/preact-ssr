@@ -1,8 +1,11 @@
 import bcrypt from 'bcrypt'
 
 export const hashPassword= (password)=>{
-   bcrypt.hash(password,12,(err, hash) => {
+  return new Promise ((resolve,reject)=>{
+    bcrypt.hash(password,12,(err, hash) => {
     if (!err){
-      return hash
+      resolve(hash)
     }});
+  }) 
+  
 }

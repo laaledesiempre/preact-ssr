@@ -10,7 +10,8 @@ export const Home = () => {
     axios.get("./api/posts")
     .then(
       (response)=>{
-      setNotes(response)
+          console.log(response.data)
+      setNotes(response.data)
     })
     .catch(err=>alert(err))
   }
@@ -23,10 +24,10 @@ export const Home = () => {
       <div class="note_wrapper">
       {
         notes.map((e)=>{
-          <>
+          return(<>
             <h6>{e.username}</h6>
-            <p>{e.note}</p>
-          </>
+            <p>{e.content}</p>
+          </>)
         })
       }
       </div>

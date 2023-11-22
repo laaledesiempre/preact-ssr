@@ -3,6 +3,17 @@
   padding: 0;
   box-sizing: border-box;
 }
-h1 {
-  color:red;
+body{
+  background-color: lightgrey;
+
+}
+@keyframes fading {
+ from {opacity: 0.0;}
+ to {opacity: 1;}
+}
+
+main *{
+  margin:2rem 1rem;
+  animation-name: fading;
+  animation-duration: 400ms;
 }
