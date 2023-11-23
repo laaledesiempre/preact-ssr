@@ -21,8 +21,8 @@ export const App = () => {
     <main>  
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register/>} />
+      {!user && <Route path="/login" element={<Login />} />}
+      {!user && <Route path="/register" element={<Register/>} />}
       <Route path="/post" element={<Post/>} />
     </Routes>
     </main>

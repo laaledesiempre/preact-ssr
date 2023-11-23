@@ -1,3 +1,5 @@
+// Tables creation
+
 export const USER_TABLE_CREATION_QUERY =`
   CREATE TABLE IF NOT EXISTS 
     users(
@@ -19,6 +21,8 @@ export const AUTH_TABLE_CREATION_QUERY =`
       refresh_key TEXT PRIMARY KEY,
       jwt TEXT NOT NULL UNIQUE );`
 
+// Create
+
 export const CREATE_USER_QUERY = `
   INSERT INTO 
     users(username,password,role) 
@@ -34,34 +38,35 @@ export const CREATE_AUTH_ENTRY_QUERY=`
     auth(refresh_key,jwt)
     VALUES(?,?);`
 
+// Delete    
+
 export const DELETE_USER_QUERY = `
   DELETE FROM users WHERE username=?;`
 
-export const DELERE_POST_QUERY = `
+export const DELETE_POST_QUERY = `
   DELETE FROM posts WHERE id=?;`
+
+// Update
 
 export const UPDATE_PASSWORD_QUERY =`
   UPDATE users 
     SET password=?
     WHERE id=?;`
 
- export const UPDATE_POST_QUERY =`
+export const UPDATE_POST_QUERY =`
   UPDATE posts
     SET content=?
     WHERE id=?;`
 
-
 // Read    
 
 export const GET_ALL_POSTS_QUERY=`
-  SELECT * FROM posts;
-`
+  SELECT * FROM posts;`
 export const GET_USER_DATA_QUERY=`
-  SELECT * FROM users WHERE username=?
-`
+  SELECT * FROM users WHERE username=?;`
+
 export const GET_POST_BY_USERNAME_QUERY=`
-  SELECT * FROM posts WHERE username=?
-`
+  SELECT * FROM posts WHERE username=?;`
+
 export const GET_POST_BY_ID_QUERY=`
-  SELECT * FROM posts WHERE id=?
-`
+  SELECT * FROM posts WHERE id=?;`

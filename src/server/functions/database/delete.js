@@ -1,5 +1,5 @@
 import { db } from "../../db"
-import { DELERE_POST_QUERY, DELETE_USER_QUERY } from "../../db/queries"
+import { DELETE_POST_QUERY, DELETE_USER_QUERY } from "../../db/queries"
 import { handleError } from "../utils"
 
 export const deleteUser =(username)=>{
@@ -7,5 +7,5 @@ export const deleteUser =(username)=>{
 }
 
 export const deletePost =(post_id)=>{
-  db.run(DELERE_POST_QUERY,[post_id],(e)=>{handleError(e)})
+  db.run(DELETE_POST_QUERY,[post_id],(e)=>{handleError(e)})
 }

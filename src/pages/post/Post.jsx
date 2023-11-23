@@ -21,10 +21,17 @@ export const Post= ()=>{
         )
     }
     return(
-        <form onSubmit={e=>handleSubmit(e)}>
-            <textarea id="content"/>
-            <button type="submit">Post!</button>
-        </form>
+        <>
+        <dialog id="post-dialog">
+            <form onSubmit={e=>handleSubmit(e)}>
+                <textarea id="content"/>
+                <button type="submit">Post!</button>
+            </form>
+        </dialog> {/*Test if this works!*/}
+        <button class="post-button" onClick={
+            e=>document.querySelector("#post-dialog")
+            .showModal()}> Show post dialog </button>
+        </>
     )
 }
 
