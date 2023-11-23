@@ -1,4 +1,4 @@
 import {Nav} from './nav/Nav'
 import {Style} from './utils/Style'
-
-export {Nav, Style}
+import { Cards } from './cards/Cards'
+export {Nav, Style, Cards}

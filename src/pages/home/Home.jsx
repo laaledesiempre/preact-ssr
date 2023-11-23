@@ -1,6 +1,6 @@
 import { h, Fragment } from 'preact'
 import { useState, useEffect } from 'preact/hooks'
-import { Style } from '../../components/index.js'
+import { Cards, Style } from '../../components/index.js'
 import axios from 'axios'
 
 export const Home = () => {
@@ -21,17 +21,15 @@ export const Home = () => {
     <>
       <h1>Welcome to laaledesiempre's guest book!</h1>
       <p>This is currently a guest book where you can leave a message!</p>
-      <div class="note_wrapper">
+      <section class="cards-wrapper">
       {
         notes.map((e)=>{
-          return(<>
-            <h6>{e.username}</h6>
-            <p>{e.content}</p>
-          </>)
+          return( <Cards username={e.username} content={e.content} id={e.id}/> )
         })
       }
-      </div>
+      </section>
       <Style name="home.css"/>
+      <Style name="cards.css"/>
     </>
   )
 }

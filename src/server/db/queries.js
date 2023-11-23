@@ -35,10 +35,10 @@ export const CREATE_AUTH_ENTRY_QUERY=`
     VALUES(?,?);`
 
 export const DELETE_USER_QUERY = `
-  DELETE * FROM users WHERE username=?;`
+  DELETE FROM users WHERE username=?;`
 
 export const DELERE_POST_QUERY = `
-  DELETE * FROM posts WHERE id=?;`
+  DELETE FROM posts WHERE id=?;`
 
 export const UPDATE_PASSWORD_QUERY =`
   UPDATE users 

@@ -1,4 +1,4 @@
-import {createUser, createPost, getPostById, getUserData} from '../functions/database/index.js'
+import {createUser, createPost, getPostById, getUserData, deletePost} from '../functions/database/index.js'
 import {ROLES} from '../configs/constants'
 import {Router} from 'express'
 import jsonwebtoken from 'jsonwebtoken'
@@ -25,8 +25,8 @@ dbRouter.post("/create/user",async (req,res)=>{
 dbRouter.post("/login",async(req,res)=>{
     const {username, password} = req.body
     const user = await getUserData(username)
-    let passwordCompar= await comparePassword(password, user.password)
-    if (user && passwordCompar) { 
+    let passwordCompar= await comparePassword(password, user)
+    if (passwordCompar) { 
     const token = jsonwebtoken.sign(username, SECRET)
         res.json({token})
     } else {
@@ -35,10 +35,14 @@ dbRouter.post("/login",async(req,res)=>{
 })
 
 dbRouter.delete("/delete/post/:id",async(req,res)=>{
-    const {id} = req.params
-    const post = await getPostById(id)
-    post.username === req.username && deletePost(post_id) //TODO
-    res.send("Data sent")
+    const {id:post_id} = req.params
+    const post = await getPostById(post_id)
+    if (post.username === req.username) {
+    deletePost(post_id)
+    res.sendStatus(200)
+  } else {
+    res.sendStatus(401)
+  }
 })
 
 dbRouter.put("/change/post/:id",async(req,res)=>{
