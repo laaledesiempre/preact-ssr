@@ -13,13 +13,14 @@ export const Register= () => {
       }
     ).then((response)=>{
       console.log(response)
+      location.replace("./login")
     }).catch((err)=>{
       alert(err)
     })
   }
   return (
     <>
-      <form onSubmit={(e)=>{handleSubmit(e)}}>
+      <form class="auth-form" onSubmit={(e)=>{handleSubmit(e)}}>
         <label for='mail'>Mail</label>
         <input type='email' id='mail' />
         <label for='username'>Username</label>

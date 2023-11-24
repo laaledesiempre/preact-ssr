@@ -12,6 +12,7 @@
   border-radius: 0.5rem;
   width:50%;
   min-width: 20rem;
+  position: relative;
 }
 
 .cards-wrapper article h6{
@@ -22,3 +23,13 @@
 .cards-wrapper article p{
   font-size: 1.5rem;
 }
+
+.cards-wrapper article .delete-button {
+  position: absolute;
+  right: 4%;
+  top: 15%;
+}
+
+.edit-button{
+    margin-block-start: 2rem;
+  }

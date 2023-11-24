@@ -14,13 +14,14 @@ export const Login = () => {
       }
     ).then((response)=>{
       window.sessionStorage.setItem("token",response.data.token)
+      location.replace("./")
     }).catch((err)=>{
       alert(err)
     })
   }
   return (
     <>
-      <form onSubmit={(e)=>{handleSubmit(e)}}>
+      <form class="auth-form" onSubmit={(e)=>{handleSubmit(e)}}>
         <label for='username'>Username</label>
         <input type='text' id='username' />
         <label for='password'>Password </label>

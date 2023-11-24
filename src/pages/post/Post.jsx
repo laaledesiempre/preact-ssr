@@ -5,7 +5,7 @@ import axios from 'axios'
 
 export const Post= ()=>{
     const handleSubmit=(e)=>{
-        const {content} = e.target
+        const {postDialogContent:content} = e.target
         e.preventDefault()
         axios.post("./db/create/post",{
             content: content.value
@@ -24,13 +24,16 @@ export const Post= ()=>{
         <>
         <dialog id="post-dialog">
             <form onSubmit={e=>handleSubmit(e)}>
-                <textarea id="content"/>
+                <textarea id="postDialogContent"/>
                 <button type="submit">Post!</button>
             </form>
+            <button onClick={ e=>document.querySelector("#post-dialog").close()}> x </button>
+ 
         </dialog> {/*Test if this works!*/}
         <button class="post-button" onClick={
             e=>document.querySelector("#post-dialog")
-            .showModal()}> Show post dialog </button>
+            .showModal()}> new </button>
+      <Style name="post.css"/>
         </>
     )
 }

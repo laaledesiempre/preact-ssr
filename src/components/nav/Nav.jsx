@@ -6,14 +6,18 @@ import { Style } from '../utils/Style'
 
 export const Nav = () => {
   const {user} = useContext(StoreContext)
+  const handleLogout=()=>{
+    window.sessionStorage.removeItem('token')
+    location.reload()
+  }
   return (
     <header>
       <nav>
         <NavLink to="/">Home</NavLink>
-        <NavLink to="/login">Login</NavLink>
-        <NavLink to="/register">Register</NavLink>
+        {!user && <NavLink to="/login">Login</NavLink>}
+        {!user &&<NavLink to="/register">Register</NavLink>}
       </nav>
-      <div class="username">{user}</div>
+        {user && <button onClick={e=>handleLogout()}>Log Out</button>}
       <Style name="nav.css" />
     </header>
   )

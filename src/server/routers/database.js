@@ -1,4 +1,4 @@
-import { createUser, createPost, getPostById, getUserData, deletePost } from '../functions/database/index.js'
+import { createUser, createPost, getPostById, getUserData, deletePost, updatePost } from '../functions/database/index.js'
 import { ROLES } from '../configs/constants'
 import { Router } from 'express'
 import { SECRET } from '../configs/server.js'
@@ -46,10 +46,11 @@ dbRouter.delete("/delete/post/:id",async(req,res)=>{
 })
 
 dbRouter.put("/change/post/:id",async(req,res)=>{
-    const {id} = req.params
-    const post = await getPostById(id)
-    post.username === req.username && updatePost(id, content) //TODO
-    res.send("Data sent")
+    const {content} = req.body
+    const {id:post_id} = req.params
+    const post = await getPostById(post_id);
+    (post && post.username === req.username) ? updatePost( content, post_id) : res.sendStatus(401)
+    res.sendStatus(200)
 })
 
 dbRouter.get("/info",(req,res)=>{

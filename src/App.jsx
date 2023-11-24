@@ -21,10 +21,11 @@ export const App = () => {
     <main>  
     <Routes>
       <Route path="/" element={<Home />} />
-      {!user && <Route path="/login" element={<Login />} />}
-      {!user && <Route path="/register" element={<Register/>} />}
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register/>} />
       <Route path="/post" element={<Post/>} />
     </Routes>
+    {user && <Post />}
     </main>
     </>
   )

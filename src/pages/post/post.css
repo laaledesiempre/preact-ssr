@@ -1,0 +1,41 @@
+dialog{
+  margin: auto;
+  padding: 3rem;
+  position: relative;
+  border-radius: 0.5rem;
+  border: none;
+}
+dialog form {
+  display: flex;
+  flex-direction: column;
+  gap:1rem; 
+}
+
+dialog form textarea {
+  resize: none;
+  height: 15rem;
+  width: 33rem;
+}
+
+dialog form button{
+  font-size: 3rem;
+}
+dialog > button {
+  font-size: 1.5rem;
+  color:red;
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  right: 5%; 
+  top:3%;
+  font-weight: 500;
+}
+
+.post-button{
+    position: absolute;
+    right: 5%;
+    bottom: 5%;
+    font-size: 3rem;
+    height: 6rem;
+    width: 6rem;
+  }
