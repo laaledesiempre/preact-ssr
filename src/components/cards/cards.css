@@ -1,3 +1,5 @@
+@import "../../colors.css";
+
 .cards-wrapper{
   margin: 2rem 0;
   display: flex;
@@ -7,21 +9,24 @@
   width:100%;
 }
 .cards-wrapper article{
-  padding: 3rem;
-  background-color: white;
+  padding: 2rem;
+  background-color: var(--foreground-dark);
   border-radius: 0.5rem;
   width:50%;
   min-width: 20rem;
   position: relative;
+  border: var(--acent) solid 0.2rem;
 }
 
 .cards-wrapper article h6{
-  font-size: 2rem;
-  margin-block-end: 1.5rem;
+  color: var(--background-dark);
+  font-size: 1rem;
+  margin-block-end: 1rem;
 }
 
 .cards-wrapper article p{
-  font-size: 1.5rem;
+  font-size: 2rem;
+  margin-inline-start: 1rem;
 }
 
 .cards-wrapper article .delete-button {
@@ -30,6 +35,45 @@
   top: 15%;
 }
 
+@keyframes shake{
+  15%, 25%, 35%{
+    transform: rotate(15deg);
+  }
+  20%, 30%, 40%{
+    transform: rotate(-15deg)
+}
+}
+
+.delete-button{
+    background:transparent;
+    border:none;
+  }
+  .delete-button > svg {
+  width: 2rem;
+  height:2rem;
+fill: var(--acent)
+  
+}
+.delete-button > svg:hover{
+  animation: shake;
+  animation-duration: 200ms;
+}
+
 .edit-button{
     margin-block-start: 2rem;
+  border: none;
+  background-color: transparent;
   }
+
+
+.edit-button > svg {
+  margin-block-start: -1.5rem;
+  fill: var(--background-dark);
+  height: 1.5rem;
+  width: 1.5rem;
+  transition: 500ms;
+}
+
+.edit-button > svg:hover {
+  transform: scale(1.2);
+}

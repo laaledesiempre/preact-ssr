@@ -10,10 +10,10 @@ export const Main=()=>{
   
 
   const [user, setUser] =useState(null)
-
+  const [notes, setNotes] =useState([])
   const store= useMemo(()=>{
-    return {user, setUser}
-  },[user])
+    return {user, setUser, notes, setNotes}
+  },[user,notes])
 
   return(
     <>

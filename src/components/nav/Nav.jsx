@@ -3,6 +3,7 @@ import { useContext } from 'preact/hooks'
 import { NavLink } from 'react-router-dom'
 import { StoreContext } from '../../Main'
 import { Style } from '../utils/Style'
+import { Logout } from '../icons'
 
 export const Nav = () => {
   const {user} = useContext(StoreContext)
@@ -17,7 +18,7 @@ export const Nav = () => {
         {!user && <NavLink to="/login">Login</NavLink>}
         {!user &&<NavLink to="/register">Register</NavLink>}
       </nav>
-        {user && <button onClick={e=>handleLogout()}>Log Out</button>}
+        {user && <button class="logout-button" onClick={e=>handleLogout()}>{<Logout/>}</button>}
       <Style name="nav.css" />
     </header>
   )

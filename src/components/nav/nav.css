@@ -1,5 +1,6 @@
+@import "../../colors.css";
 header {
-  background-color: grey;
+  background-color: var(--background);
   display: flex;
   padding: 0 0.7rem;
   justify-content: space-between;
@@ -12,11 +13,12 @@ nav{
 }
 nav a {
   padding: 0.5rem 1rem;
+  font-size: 2rem;
   text-decoration: none;
-  color: black;
-  background-color: lightgrey;
+  color:var(--background-dark);
+  background-color: var(--foreground-dark);
   border-radius: 0.5rem;
-  height:3rem;
+  height:3.8rem;
   transition:300ms linear height;
 }
 
@@ -28,5 +30,25 @@ header .username{
 
 .active{
   border-radius: 0.5rem 0.5rem 0 0;
-  height: 3.8rem;
+  background-color: var(--foreground);
   }
+
+.logout-button{
+  background-color: var(--background);
+  border: none;
+  border-radius: 0.2rem;
+  padding:0.2rem;
+  height: 2rem;
+  margin: auto 1rem auto 0;
+  transition: 200ms;
+}
+
+.logout-button:hover{
+  background-color: var(--acent);
+}
+
+.logout-button > svg{
+  height: 1.5rem;
+  width: 1.5rem;
+  fill:antiquewhite
+}

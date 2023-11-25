@@ -2,25 +2,15 @@ import { h, Fragment } from 'preact'
 import { useState, useEffect } from 'preact/hooks'
 import { Cards, Style } from '../../components/index.js'
 import axios from 'axios'
+import { useContext } from 'preact/hooks'
+import { StoreContext } from '../../Main'
 
 export const Home = () => {
-  const [notes, setNotes] = useState([])
-
-  useEffect(()=>{
-    axios.get("./api/posts")
-    .then(
-      (response)=>{
-          console.log(response.data)
-      setNotes(response.data)
-    })
-    .catch(err=>alert(err))
-  }
-  ,[])
-
-  return (
+  const {notes} =useContext(StoreContext)
+   return (
     <>
       <h1>Welcome to laaledesiempre's guest book!</h1>
-      <p>This is currently a guest book where you can leave a message!</p>
+      <h2>This is currently a guest book where you can leave a message!</h2>
       <section class="cards-wrapper">
       {
         notes.map((e)=>{

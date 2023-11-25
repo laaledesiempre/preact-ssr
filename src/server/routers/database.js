@@ -49,12 +49,13 @@ dbRouter.put("/change/post/:id",async(req,res)=>{
     const {content} = req.body
     const {id:post_id} = req.params
     const post = await getPostById(post_id);
-    (post && post.username === req.username) ? updatePost( content, post_id) : res.sendStatus(401)
+    (post && post.username === req.username) 
+      ? updatePost( content, post_id) 
+      : res.sendStatus(401)
     res.sendStatus(200)
 })
 
 dbRouter.get("/info",(req,res)=>{
-  req.username && console.log(req.username) 
   res.json({username: req.username})  
 })
 

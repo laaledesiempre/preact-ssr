@@ -5,16 +5,25 @@ import { Home, Register, Login,Post } from './pages/index.js'
 import { useContext, useEffect } from 'preact/hooks'
 import axios from 'axios'
 import { StoreContext } from './Main'
-// Please clean this fucking mess up please!
+import { reloadPosts } from './components/utils/reloadPosts.js'
+
 export const App = () => {
-    const {user, setUser} = useContext(StoreContext)
+    const {user, setUser, setNotes} = useContext(StoreContext)
+
+    useEffect(async()=>{
+    const posts= await reloadPosts()
+    posts ? setNotes(posts.reverse()) : setNotes([])
+  }
+    ,[])
+
     useEffect(()=>{
+    if (window.sessionStorage.getItem('token')) {
     axios.get("./db/info",{headers:{
       'Authorization': 'Bearer '+window.sessionStorage.getItem('token')
     }})
       .then(res=>setUser(res.data.username))
-      .catch(err=>console.log(err))
-  },[])
+      .catch(err=>{alert(err)})
+  }},[])
   return (
  <> 
     <Nav />

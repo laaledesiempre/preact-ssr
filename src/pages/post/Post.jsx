@@ -1,9 +1,13 @@
 import {h, Fragment} from 'preact'
-import { useState } from 'react'
+import { useContext } from 'preact/hooks'
 import { Style } from '../../components/Style'
 import axios from 'axios'
+import { Pencil } from '../../components/icons'
+import { StoreContext } from '../../Main'
+import { reloadPosts } from '../../components/utils/reloadPosts'
 
 export const Post= ()=>{
+    const {setNotes} = useContext(StoreContext)
     const handleSubmit=(e)=>{
         const {postDialogContent:content} = e.target
         e.preventDefault()
@@ -13,9 +17,11 @@ export const Post= ()=>{
         headers: {
         'Authorization': 'Bearer '+window.sessionStorage.getItem('token')
         }}
-        ).then(
-            response=>console.log(response)
-        )
+        ).then(async(_response)=>{
+          document.querySelector("#post-dialog").close()
+          const posts= await reloadPosts()
+          posts && setNotes(posts.reverse())
+       })
         .catch(
             err=>console.log(err)
         )
@@ -32,7 +38,7 @@ export const Post= ()=>{
         </dialog> {/*Test if this works!*/}
         <button class="post-button" onClick={
             e=>document.querySelector("#post-dialog")
-            .showModal()}> new </button>
+            .showModal()}> {<Pencil/>}</button>
       <Style name="post.css"/>
         </>
     )

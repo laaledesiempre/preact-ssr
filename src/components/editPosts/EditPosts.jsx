@@ -1,16 +1,25 @@
 import axios from 'axios'
 import {h, Fragment} from 'preact'
+import { Pencil } from '../icons'
+import { useContext } from 'preact/hooks'
+import { StoreContext } from '../../Main'
+import { reloadPosts } from '../utils/reloadPosts'
 
 export const EditPost = (props)=>{
+  const {setNotes} = useContext(StoreContext)
   const handleSubmit=(e)=>{
+
     e.preventDefault()
     const {value:content} = e.target.editDialogContent
     axios.put("./db/change/post/"+ props.id, {content}, {
       headers: {
         'Authorization': "Bearer "+ window.sessionStorage.getItem('token')
       }
-    }). then(response=>{console.log(response)
-      location.replace("./")})
+    }). then(async(response)=>{
+      document.querySelector("#edit-dialog"+props.id).close()
+      const posts= await reloadPosts()
+      setNotes(posts.reverse())
+      })
     .catch(err=>alert(err))
   }
   return(
@@ -22,7 +31,7 @@ export const EditPost = (props)=>{
       </form>
       <button onClick={ e=>document.querySelector("#edit-dialog"+props.id).close()}> x </button>
   </dialog>
-  <button class="edit-button" onClick={e=>document.querySelector("#edit-dialog"+props.id).showModal()}>edit</button>
+  <button class="edit-button" onClick={e=>document.querySelector("#edit-dialog"+props.id).showModal()}>{<Pencil/>}</button>
     </>
   )
 }
