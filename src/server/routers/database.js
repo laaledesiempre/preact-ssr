@@ -8,21 +8,32 @@ import jsonwebtoken from 'jsonwebtoken'
 
 const dbRouter= Router()
 
-dbRouter.post("/create/post",(req,res)=>{
+
+// Creation endpoints
+dbRouter.post(
+  "/create/post",
+  (req,res)=>{
     const {content} = req.body
     const username = req.username
     username && createPost(username, content)
     res.send("Data sent")
-})
+  }
+)
 
-dbRouter.post("/create/user",async (req,res)=>{
+dbRouter.post(
+  "/create/user",
+  async (req,res)=>{
     const {username, password} = req.body
     let hashedPassword = await hashPassword(password)
     createUser(username,hashedPassword,ROLES.USER)
     res.send("Data sent to create user")
-})
+  }
+)
 
-dbRouter.post("/login",async(req,res)=>{
+// Login endpoint
+dbRouter.post(
+  "/login",
+  async(req,res)=>{
     const {username, password} = req.body
     const user = await getUserData(username)
     let passwordCompar= await comparePassword(password, user)
@@ -32,9 +43,13 @@ dbRouter.post("/login",async(req,res)=>{
     } else {
       res.sendStatus(401)
     } 
-})
+  }
+)
 
-dbRouter.delete("/delete/post/:id",async(req,res)=>{
+// Delete enpoints
+dbRouter.delete(
+  "/delete/post/:id",
+  async(req,res)=>{
     const {id:post_id} = req.params
     const post = await getPostById(post_id)
     if (post.username === req.username) {
@@ -43,9 +58,13 @@ dbRouter.delete("/delete/post/:id",async(req,res)=>{
     } else {
       res.sendStatus(401)
     }
-})
+  }
+)
 
-dbRouter.put("/change/post/:id",async(req,res)=>{
+// Put/Patch endpoints
+dbRouter.put(
+  "/change/post/:id",
+  async(req,res)=>{
     const {content} = req.body
     const {id:post_id} = req.params
     const post = await getPostById(post_id);
@@ -53,11 +72,16 @@ dbRouter.put("/change/post/:id",async(req,res)=>{
       ? updatePost( content, post_id) 
       : res.sendStatus(401)
     res.sendStatus(200)
-})
+  }
+)
 
-dbRouter.get("/info",(req,res)=>{
-  res.json({username: req.username})  
-})
+// Username getter endpoint
+dbRouter.get(
+  "/info",
+  (req,res)=>{
+    res.json({username: req.username})  
+  }
+)
 
 export {dbRouter}
 

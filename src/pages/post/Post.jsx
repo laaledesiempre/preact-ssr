@@ -9,10 +9,10 @@ import { reloadPosts } from '../../components/utils/reloadPosts'
 export const Post= ()=>{
     const {setNotes} = useContext(StoreContext)
     const handleSubmit=(e)=>{
-        const {postDialogContent:content} = e.target
+        const {value:content} = e.target.postDialogContent
         e.preventDefault()
         axios.post("./db/create/post",{
-            content: content.value
+            content: content
         },{
         headers: {
         'Authorization': 'Bearer '+window.sessionStorage.getItem('token')
@@ -25,6 +25,7 @@ export const Post= ()=>{
         .catch(
             err=>console.log(err)
         )
+        e.target.postDialogContent.value = ""
     }
     return(
         <>

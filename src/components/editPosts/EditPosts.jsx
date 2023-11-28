@@ -21,6 +21,7 @@ export const EditPost = (props)=>{
       setNotes(posts.reverse())
       })
     .catch(err=>alert(err))
+    e.target.editDialogContent.value = ""
   }
   return(
     <>
