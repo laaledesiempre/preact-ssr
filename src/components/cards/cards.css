@@ -12,8 +12,8 @@
   padding: 2rem;
   background-color: var(--foreground-dark);
   border-radius: 0.5rem;
-  width:50%;
-  min-width: 20rem;
+  width:90%;
+  max-width: 50rem;
   position: relative;
   border: var(--acent) solid 0.2rem;
 }
