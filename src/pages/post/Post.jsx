@@ -1,6 +1,6 @@
 import {h, Fragment} from 'preact'
 import { useContext } from 'preact/hooks'
-import { Style } from '../../components/Style'
+import { Style } from '../../components/utils/Style'
 import axios from 'axios'
 import { Pencil } from '../../components/icons'
 import { StoreContext } from '../../Main'
